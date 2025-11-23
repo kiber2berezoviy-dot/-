@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Кино Советчик</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 AI Кино Советчик</h1>
+    <p>Опишите ваше настроение, и мы подберем идеальный фильм!</p>
+    
+    <form method="POST">
+        <label for="message"><strong>Ваше настроение:</strong></label><br>
+        <textarea id="message" name="message" rows="4" placeholder="Например: Сегодня я чувствую себя отлично! Или: У меня был тяжелый день...">{{ user_text }}</textarea>
+        <br>
+        <button type="submit">🎯 Получить рекомендацию</button>
+    </form>
+
+    {% if recommendation %}
+    <div class="result">
+        <h3>📊 Анализ настроения:</h3>
+        <p>{{ recommendation }}</p>
+    </div>
+    {% endif %}
+
+    {% if ai_result %}
+    <div class="result">
+        <h3>🎥 Рекомендация фильма:</h3>
+        <p>{{ ai_result }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
